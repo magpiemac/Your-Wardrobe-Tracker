@@ -5,7 +5,7 @@ class WardrobeItemsController < ApplicationController
   # GET /wardrobe_items
   # GET /wardrobe_items.json
   def index
-    @wardrobe_items = WardrobeItem.all
+    @wardrobe_items = current_user.wardrobe_items
   end
 
   # GET /wardrobe_items/1
