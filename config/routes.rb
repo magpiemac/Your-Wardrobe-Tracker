@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'welcome#home'
   resources :wardrobe_item_capsules
   devise_for :users
   resources :wardrobe_items
