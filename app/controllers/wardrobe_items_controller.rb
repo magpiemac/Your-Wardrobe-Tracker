@@ -1,4 +1,5 @@
 class WardrobeItemsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_wardrobe_item, only: [:show, :edit, :update, :destroy]
 
   # GET /wardrobe_items
