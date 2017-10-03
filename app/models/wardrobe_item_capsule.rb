@@ -1,0 +1,2 @@
+class WardrobeItemCapsule < ApplicationRecord
+end
