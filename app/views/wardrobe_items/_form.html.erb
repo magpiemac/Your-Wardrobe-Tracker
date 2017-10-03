@@ -1,0 +1,17 @@
+<%= form_for(wardrobe_item) do |f| %>
+  <% if wardrobe_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(wardrobe_item.errors.count, "error") %> prohibited this wardrobe_item from being saved:</h2>
+
+      <ul>
+      <% wardrobe_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
