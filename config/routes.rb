@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'welcome#home'
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   authenticated :user do
     root to: 'wardrobe_items#index', as: :authenticated_root

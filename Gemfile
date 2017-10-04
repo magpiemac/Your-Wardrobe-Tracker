@@ -38,6 +38,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'devise-bootstrap-views'
+gem 'omniauth-facebook'
+gem 'dotenv-rails'
 
 
 group :development, :test do
