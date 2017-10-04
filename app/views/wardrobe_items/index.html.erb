@@ -12,6 +12,7 @@
   <tbody>
     <% @wardrobe_items.each do |wardrobe_item| %>
       <tr>
+        <td><%= wardrobe_item.item %>-<%= wardrobe_item.description %></td>
         <td><%= link_to 'Show', wardrobe_item %></td>
         <td><%= link_to 'Edit', edit_wardrobe_item_path(wardrobe_item) %></td>
         <td><%= link_to 'Destroy', wardrobe_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>

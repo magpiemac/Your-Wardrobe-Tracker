@@ -70,6 +70,10 @@ class CapsulesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def capsule_params
-      params.fetch(:capsule, {})
+      params.require(:capsule).permit(:name, :wardrobe_item_id)
+    end
+
+    def find_wardrobe_item
+      @wardrobe_item = WardrobeItem.find(params[:id])
     end
 end
