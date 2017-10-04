@@ -1,2 +1,0 @@
-class WardrobeItemCapsulesController < ApplicationController
-end

@@ -5,7 +5,7 @@ class CapsulesController < ApplicationController
   # GET /capsules
   # GET /capsules.json
   def index
-    @capsules = Capsule.all
+    @capsules = current_user.capsules
   end
 
   # GET /capsules/1
