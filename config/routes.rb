@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   authenticated :user do
     root to: 'wardrobe_items#index', as: :authenticated_root
   end
-  
+
   resources :wardrobe_item_capsules
   resources :wardrobe_items
   resources :capsules

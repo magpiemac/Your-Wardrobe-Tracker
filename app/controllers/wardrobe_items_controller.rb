@@ -1,6 +1,7 @@
 class WardrobeItemsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_wardrobe_item, only: [:show, :edit, :update, :destroy]
+  before_action :all_capsules, only: [:new, :create, :edit, :update, :show]
 
   # GET /wardrobe_items
   # GET /wardrobe_items.json
@@ -15,7 +16,7 @@ class WardrobeItemsController < ApplicationController
 
   # GET /wardrobe_items/new
   def new
-    @wardrobe_item = WardrobeItem.new
+    @wardrobe_item = WardrobeItem.new(user_id: current_user.id)
   end
 
   # GET /wardrobe_items/1/edit
@@ -70,6 +71,10 @@ class WardrobeItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wardrobe_item_params
-      params.fetch(:wardrobe_item, {})
+      params.require(:wardrobe_item).permit(:item, :description, :user_id, capsule_ids:[], capsules_attributes:%i[name id])
+    end
+
+    def all_capsules
+      @capsules = current_user.capsules
     end
 end

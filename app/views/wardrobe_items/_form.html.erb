@@ -1,4 +1,26 @@
 <%= form_for(wardrobe_item) do |f| %>
+  <%= f.hidden_field :user_id %>
+
+    <div class="field"><%= f.label :item %><br>
+    <%= f.text_field:item %></div>
+
+    <div class="field"><%= f.label :description %><br>
+    <%= f.text_field:description %></div>
+
+    <br><br>
+    <section>
+    <strong>Select a capsule for your wardrobe item:</strong>
+      <%= f.collection_check_boxes :capsule_ids, Capsule.all, :id, :name %><br><br>
+    </section>
+    <strong>Add a new capsule:</strong>
+    <%= f.fields_for :capsules, wardrobe_item.capsules.build do |c| %>
+      <div class="field">
+        <%= c.label :name %>
+        <%= c.text_field:name%>
+      </div>
+    <% end %>
+    <br>
+
   <% if wardrobe_item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(wardrobe_item.errors.count, "error") %> prohibited this wardrobe_item from being saved:</h2>
