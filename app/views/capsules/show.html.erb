@@ -1,8 +1,7 @@
-<strong><%= @capsule.name %></strong>
+<h1><%= @capsule.name %> Capsule</h1>
+<br>
+<h3>Wardrobe items in this capsule:</h3>
+<ul><%= render(@wardrobe_items) || "There are no wardrobe items in this capsule." %></ul><br>
 
-<%= link_to 'Edit', edit_capsule_path(@capsule) %> |
+<%= link_to 'Edit', edit_capsule_path(@capsule) %>
 <%= link_to 'Back', capsules_path %>
-
-<% @capsule.wardrobe_items.each do |wardrobe_item| %>
-     <%= link_to "#{wardrobe_item.item} - #{wardrobe_item.description}", wardrobe_items_path(:id) %>
- <% end %>

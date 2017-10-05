@@ -1,21 +1,23 @@
 class CapsulesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_capsule, only: [:show, :edit, :update, :destroy]
+  before_action :find_wardrobe_item, only: [:index, :new, :create]
+  before_action :current_capsule, only: [:show, :edit, :update, :destroy]
 
   # GET /capsules
   # GET /capsules.json
   def index
-    @capsules = current_user.capsules
+    @capsules = Capsule.all
   end
 
   # GET /capsules/1
   # GET /capsules/1.json
   def show
+    @wardrobe_items = @capsule.wardrobe_items
   end
 
   # GET /capsules/new
   def new
-    @capsule = @wardrobe_item.capsule.build
+    @capsule = Capsule.new
   end
 
   # GET /capsules/1/edit
@@ -27,7 +29,7 @@ class CapsulesController < ApplicationController
   def create
     @capsule = Capsule.new(capsule_params)
     @capsule.wardrobe_item_ids = params[:wardrobe_item_id]
-    
+
     respond_to do |format|
       if @capsule.save
         format.html { redirect_to @capsule, notice: 'Capsule was successfully created.' }
@@ -75,6 +77,10 @@ class CapsulesController < ApplicationController
     end
 
     def find_wardrobe_item
-      @wardrobe_item = WardrobeItem.find(params[:id])
+      @wardrobe_item = WardrobeItem.find_by(id: params[:id])
+    end
+
+    def current_capsule
+      @capsule = Capsule.find_by(id: params[:id])
     end
 end

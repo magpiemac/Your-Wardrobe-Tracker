@@ -1,7 +1,7 @@
 class WardrobeItemsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_wardrobe_item, only: [:show, :edit, :update, :destroy]
   before_action :all_capsules, only: [:new, :create, :edit, :update, :show]
+  before_action :current_wardrobe_item, only: [:update, :destroy]
 
   # GET /wardrobe_items
   # GET /wardrobe_items.json
@@ -77,5 +77,9 @@ class WardrobeItemsController < ApplicationController
 
     def all_capsules
       @capsules = current_user.capsules
+    end
+
+    def current_wardrobe_item
+      @wardrobe_item = WardrobeItem.find_by(id: params[:id])
     end
 end

@@ -1,6 +1,6 @@
-<%= form_for(capsule) do |f| %>
+<%= form_for ([@wardrobe_item, @capsule]) do |f| %>
 <div class="field"><%= f.label :name %><br>
-<%= f.text_field:name %></div>  
+<%= f.text_field:name %></div>
   <% if capsule.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(capsule.errors.count, "error") %> prohibited this capsule from being saved:</h2>
