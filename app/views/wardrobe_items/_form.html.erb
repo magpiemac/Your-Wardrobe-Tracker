@@ -1,5 +1,5 @@
-<%= form_for(wardrobe_item) do |f| %>
-  <%= f.hidden_field :user_id %>
+<%= form_for wardrobe_item do |f| %>
+<%= f.hidden_field :user_id %>
 
     <div class="field"><%= f.label :item %><br>
     <%= f.text_field:item %></div>

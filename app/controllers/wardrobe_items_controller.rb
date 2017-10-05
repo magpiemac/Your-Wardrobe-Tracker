@@ -12,6 +12,9 @@ class WardrobeItemsController < ApplicationController
   # GET /wardrobe_items/1
   # GET /wardrobe_items/1.json
   def show
+    if current_wardrobe_item
+      @capsules = @wardrobe_item.capsules
+    end
   end
 
   # GET /wardrobe_items/new
@@ -22,6 +25,9 @@ class WardrobeItemsController < ApplicationController
 
   # GET /wardrobe_items/1/edit
   def edit
+    if current_wardrobe_item
+      @wardrobe_item.capsules.build
+    end
   end
 
   # POST /wardrobe_items

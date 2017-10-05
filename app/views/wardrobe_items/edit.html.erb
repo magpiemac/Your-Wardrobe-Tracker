@@ -1,6 +1,7 @@
 <h1>Editing Wardrobe Item</h1>
 
-<%= render 'form', wardrobe_item: @wardrobe_item %>
+<%= render 'wardrobe_items/form', wardrobe_item: @wardrobe_item, capsules: @capsules %>
+
 
 <%= link_to 'Show', @wardrobe_item %> |
 <%= link_to 'Back', wardrobe_items_path %>

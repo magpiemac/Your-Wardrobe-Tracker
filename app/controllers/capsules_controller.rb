@@ -17,7 +17,7 @@ class CapsulesController < ApplicationController
 
   # GET /capsules/new
   def new
-    @capsule = Capsule.new
+    @capsule = @wardrobe_item.capsules.build
   end
 
   # GET /capsules/1/edit

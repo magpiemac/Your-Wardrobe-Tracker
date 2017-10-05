@@ -1,4 +1,14 @@
-<strong><%= @wardrobe_item.item %>-<%= @wardrobe_item.description %></strong>
+<h2><%= @wardrobe_item.item %>-<%= @wardrobe_item.description %></h2>
 
 <%= link_to 'Edit', edit_wardrobe_item_path(@wardrobe_item) %> |
 <%= link_to 'Back', wardrobe_items_path %>
+
+<h3>Wardrobe item capsules</h3>
+<% if @wardrobe_item.capsules.nil? %>
+<p>You haven't added this wardrobe item to any capsules yet.</p>
+<%= link_to 'Add a Capsule', new_capsule_path %>
+<% else %>
+<% @wardrobe_item.capsules.each do |capsule| %>
+<li><%= link_to capsule.name, wardrobe_item_capsule_path(@wardrobe_item, capsule) %></li>
+<% end %>
+<% end %>
