@@ -5,7 +5,6 @@ class WardrobeItem < ApplicationRecord
 
   validates :item, presence: true
   validates :description, presence: true
-  validates :description, uniqueness: true
 
   def capsules_attributes=(capsules_attributes)
     capsules_attributes.values.each do |capsule_attribute|

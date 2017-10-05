@@ -15,7 +15,7 @@ class CapsulesController < ApplicationController
 
   # GET /capsules/new
   def new
-    @capsule = Capsule.new
+    @capsule = @wardrobe_item.capsule.build
   end
 
   # GET /capsules/1/edit
@@ -26,7 +26,8 @@ class CapsulesController < ApplicationController
   # POST /capsules.json
   def create
     @capsule = Capsule.new(capsule_params)
-
+    @capsule.wardrobe_item_ids = params[:wardrobe_item_id]
+    
     respond_to do |format|
       if @capsule.save
         format.html { redirect_to @capsule, notice: 'Capsule was successfully created.' }

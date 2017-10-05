@@ -17,6 +17,7 @@ class WardrobeItemsController < ApplicationController
   # GET /wardrobe_items/new
   def new
     @wardrobe_item = WardrobeItem.new(user_id: current_user.id)
+    @wardrobe_item.capsules.build
   end
 
   # GET /wardrobe_items/1/edit
@@ -71,7 +72,7 @@ class WardrobeItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wardrobe_item_params
-      params.require(:wardrobe_item).permit(:item, :description, :user_id, capsule_ids:[], capsules_attributes:%i[name id])
+      params.require(:wardrobe_item).permit(:item, :description, :user_id, capsule_ids:[], capsules_attributes:[:name, :id])
     end
 
     def all_capsules

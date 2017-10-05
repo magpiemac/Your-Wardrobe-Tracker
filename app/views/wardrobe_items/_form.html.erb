@@ -7,12 +7,12 @@
     <div class="field"><%= f.label :description %><br>
     <%= f.text_field:description %></div>
 
-    <br><br>
+    <br>
     <section>
-    <strong>Select a capsule for your wardrobe item:</strong>
-      <%= f.collection_check_boxes :capsule_ids, Capsule.all, :id, :name %><br><br>
-    </section>
-    <strong>Add a new capsule:</strong>
+    <strong>Select a capsule for your wardrobe item:
+      <%= f.collection_select(:capsule_ids, Capsule.all, :id, :name, {prompt: true}) %></strong>
+    </section><br>
+    <strong>Or add a new capsule:</strong>
     <%= f.fields_for :capsules, wardrobe_item.capsules.build do |c| %>
       <div class="field">
         <%= c.label :name %>
