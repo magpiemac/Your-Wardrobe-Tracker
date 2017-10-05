@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :wardrobe_items
   has_many :capsules, through: :wardrobe_items
 
+  validates :email, presence: true
+  validates :email, uniqueness: true
+  validates :password, length: { in: 6..20 }
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
