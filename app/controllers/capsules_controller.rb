@@ -12,7 +12,7 @@ class CapsulesController < ApplicationController
   # GET /capsules/1
   # GET /capsules/1.json
   def show
-    @wardrobe_items = @capsule.wardrobe_items
+     @wardrobe_items = @capsule.wardrobe_items
   end
 
   # GET /capsules/new
@@ -74,7 +74,7 @@ class CapsulesController < ApplicationController
     end
 
     def find_wardrobe_item
-      @wardrobe_item = WardrobeItem.find_by(id: params[:id])
+      @wardrobe_item = WardrobeItem.find_by(id: params[:wardrobe_item_id])
     end
 
     def current_capsule

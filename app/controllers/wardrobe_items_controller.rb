@@ -14,6 +14,9 @@ class WardrobeItemsController < ApplicationController
   def show
     if current_wardrobe_item
       @capsules = @wardrobe_item.capsules
+      render :show
+    else
+      redirect_to wardrobe_items_path
     end
   end
 
