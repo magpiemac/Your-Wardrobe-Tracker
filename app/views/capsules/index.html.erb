@@ -8,6 +8,7 @@
   </thead>
 
   <tbody>
+    <% if @capsules %>
     <% @capsules.each do |capsule| %>
       <tr>
         <td><%= capsule.name %></td>
@@ -16,6 +17,9 @@
         <td><%= link_to 'Destroy', capsule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+   <% else %>
+    <h3>You have not created any capsules yet.</h3>
+   <% end %>
   </tbody>
 </table>
 
