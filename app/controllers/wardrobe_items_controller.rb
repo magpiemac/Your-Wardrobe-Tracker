@@ -16,8 +16,8 @@ class WardrobeItemsController < ApplicationController
 
   # GET /wardrobe_items/new
   def new
-    @wardrobe_item = WardrobeItem.new
-    @capsules = Capsule.all
+    @wardrobe_item = WardrobeItem.new(user_id: current_user.id)
+    @wardrobe_item.capsules.build
   end
 
   # GET /wardrobe_items/1/edit
@@ -29,7 +29,6 @@ class WardrobeItemsController < ApplicationController
   # POST /wardrobe_items.json
   def create
     @wardrobe_item = current_user.wardrobe_items.build(wardrobe_item_params)
-    @capsules = Capsule.all
 
     respond_to do |format|
       if @wardrobe_item.save
