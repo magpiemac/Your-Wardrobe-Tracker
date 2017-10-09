@@ -22,7 +22,7 @@ class WardrobeItemsController < ApplicationController
 
   # GET /wardrobe_items/1/edit
   def edit
-
+    @wardrobe_item.capsules.build
   end
 
   # POST /wardrobe_items
@@ -30,7 +30,7 @@ class WardrobeItemsController < ApplicationController
   def create
     @wardrobe_item = current_user.wardrobe_items.build(wardrobe_item_params)
     @capsules = Capsule.all
-    
+
     respond_to do |format|
       if @wardrobe_item.save
         format.html { redirect_to @wardrobe_item, notice: 'Wardrobe item was successfully created.' }
@@ -75,6 +75,6 @@ class WardrobeItemsController < ApplicationController
     end
 
     def wardrobe_item_params
-      params.require(:wardrobe_item).permit(:item, :description, :user_id, capsule_ids:[], capsules_attributes:[:name])
+      params.require(:wardrobe_item).permit(:item, :description, :user_id, capsule_ids:[], capsules_attributes:[:name, :id])
     end
 end
