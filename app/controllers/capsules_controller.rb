@@ -1,7 +1,6 @@
 class CapsulesController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_wardrobe_item, only: [:index, :new, :create]
-  before_action :current_capsule, only: [:show, :edit, :update, :destroy]
+  before_action :set_capsule, only: [:show, :edit, :update, :destroy]
 
   # GET /capsules
   # GET /capsules.json
@@ -18,7 +17,6 @@ class CapsulesController < ApplicationController
   # GET /capsules/new
   def new
     @capsule = Capsule.new
-    @capsule.wardrobe_items.build
   end
 
   # GET /capsules/1/edit
@@ -69,15 +67,12 @@ class CapsulesController < ApplicationController
   private
 
     # Never trust parameters from the scary internet, only allow the white list through.
+    def set_capsule
+      @capsule = Capsule.find(params[:id])
+    end
+
     def capsule_params
-      params.require(:capsule).permit(:name, :wardrobe_item_id)
+      params.require(:capsule).permit(:name, :wardrobe_item_id, :user_id)
     end
 
-    def find_wardrobe_item
-      @wardrobe_item = WardrobeItem.find_by(id: params[:wardrobe_item_id])
-    end
-
-    def current_capsule
-      @capsule = Capsule.find_by(id: params[:id])
-    end
 end
