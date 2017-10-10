@@ -74,6 +74,6 @@ class WardrobeItemsController < ApplicationController
     end
 
     def wardrobe_item_params
-      params.require(:wardrobe_item).permit(:item, :description, :user_id, capsule_ids:[], capsules_attributes:[:name, :id, :user_id])
+      params.require(:wardrobe_item).permit(:item, :description, :user_id, capsule_ids:[], capsules_attributes:[:name, :id])
     end
 end

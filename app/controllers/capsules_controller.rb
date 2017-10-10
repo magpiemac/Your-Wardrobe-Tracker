@@ -5,8 +5,8 @@ class CapsulesController < ApplicationController
   # GET /capsules
   # GET /capsules.json
   def index
-    @capsules = current_user.capsules
-    raise @capsules.inspect
+    @capsules = Capsule.all
+    #raise @capsules.inspect
   end
 
   # GET /capsules/1
@@ -17,8 +17,7 @@ class CapsulesController < ApplicationController
 
   # GET /capsules/new
   def new
-    @capsule = Capsule.new
-    @capsule.wardrobe_items.build
+    @capsule = @wardrobe_item.capsules.build
   end
 
   # GET /capsules/1/edit
@@ -35,6 +34,7 @@ class CapsulesController < ApplicationController
       if @capsule.save
         format.html { redirect_to @capsule, notice: 'Capsule was successfully created.' }
         format.json { render :show, status: :created, location: @capsule }
+        #raise @capsule.inspect
       else
         format.html { render :new }
         format.json { render json: @capsule.errors, status: :unprocessable_entity }
