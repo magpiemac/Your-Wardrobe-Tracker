@@ -9,7 +9,7 @@
 
     <br>
     <strong>Select a capsule for your wardrobe item:</strong><br>
-    <%= f.collection_check_boxes :capsule_ids, Capsule.all, :id, :name %><br><br>
+    <%= f.collection_check_boxes :capsule_ids, current_user.capsules, :id, :name %><br><br>
     <strong>Or add a new capsule:</strong>
     <%= f.fields_for :capsules, wardrobe_item.capsules.build do |c| %>
     <div class="field"><%= c.label :name %>

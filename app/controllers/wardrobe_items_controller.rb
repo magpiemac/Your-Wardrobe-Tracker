@@ -16,7 +16,7 @@ class WardrobeItemsController < ApplicationController
 
   # GET /wardrobe_items/new
   def new
-    @wardrobe_item = WardrobeItem.new(user_id: current_user.id)
+    @wardrobe_item = WardrobeItem.new
     @wardrobe_item.capsules.build
   end
 
@@ -74,6 +74,6 @@ class WardrobeItemsController < ApplicationController
     end
 
     def wardrobe_item_params
-      params.require(:wardrobe_item).permit(:item, :description, :user_id, capsule_ids:[], capsules_attributes:[:name, :id])
+      params.require(:wardrobe_item).permit(:item, :description, :user_id, capsule_ids:[], capsules_attributes:[:name])
     end
 end
