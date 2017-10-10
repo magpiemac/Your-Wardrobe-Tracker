@@ -5,7 +5,7 @@ class CapsulesController < ApplicationController
   # GET /capsules
   # GET /capsules.json
   def index
-    @capsules = Capsule.all
+    @capsules = current_user.capsules
     #raise @capsules.inspect
   end
 
@@ -17,7 +17,7 @@ class CapsulesController < ApplicationController
 
   # GET /capsules/new
   def new
-    @capsule = @wardrobe_item.capsules.build
+    @capsule = Capsule.new
   end
 
   # GET /capsules/1/edit
@@ -74,7 +74,7 @@ class CapsulesController < ApplicationController
     end
 
     def capsule_params
-      params.require(:capsule).permit(:name, :wardrobe_item_id, :user_id)
+      params.require(:capsule).permit(:name, :wardrobe_item_id)
     end
 
 end
