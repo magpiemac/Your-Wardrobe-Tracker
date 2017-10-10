@@ -29,7 +29,7 @@ class CapsulesController < ApplicationController
   def create
     @capsule = Capsule.new(capsule_params)
     @capsule.wardrobe_item_ids = params[:wardrobe_item_id]
-
+  
     respond_to do |format|
       if @capsule.save
         format.html { redirect_to @capsule, notice: 'Capsule was successfully created.' }
@@ -74,7 +74,7 @@ class CapsulesController < ApplicationController
     end
 
     def capsule_params
-      params.require(:capsule).permit(:name, :wardrobe_item_id)
+      params.require(:capsule).permit(:name, :wardrobe_item_id, :user_id)
     end
 
 end

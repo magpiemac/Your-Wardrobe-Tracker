@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
 
   has_many :wardrobe_items
-  has_many :capsules, through: :wardrobe_items
+  has_many :capsules
 
   validates :email, presence: true
   validates :email, uniqueness: true
