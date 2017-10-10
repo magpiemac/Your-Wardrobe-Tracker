@@ -6,6 +6,7 @@ class CapsulesController < ApplicationController
   # GET /capsules.json
   def index
     @capsules = current_user.capsules
+    raise @capsules.inspect
   end
 
   # GET /capsules/1
