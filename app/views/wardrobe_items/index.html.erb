@@ -8,14 +8,18 @@
   </thead>
 
   <tbody>
+    <% if @wardrobe_items.exists? %>
     <% @wardrobe_items.each do |wardrobe_item| %>
       <tr>
-        <td><%= wardrobe_item.item %>-<%= wardrobe_item.description %></td>
+        <td><strong><%= wardrobe_item.item %>-<%= wardrobe_item.description %></strong></td>
         <td><%= link_to 'Show', wardrobe_item %></td>
         <td><%= link_to 'Edit', edit_wardrobe_item_path(wardrobe_item) %></td>
         <td><%= link_to 'Destroy', wardrobe_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-      <% end %>
+       <% end %>
+      <% else %>
+       <h4>You have not created any wardrobe items yet.</h4>
+    <% end %>
   </tbody>
 </table>
 

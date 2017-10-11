@@ -1,7 +1,7 @@
 <h1><%= @capsule.name %> Capsule</h1>
 <br>
 <h3>Wardrobe items in this capsule:</h3>
-<ul><%= render(@wardrobe_items) || "There are no wardrobe items in this capsule." %></ul><br>
-
-<%= link_to 'Edit', edit_capsule_path(@capsule) %>
-<%= link_to 'Back', capsules_path %>
+ <%= render(@wardrobe_items) || "There are no wardrobe items in this capsule." %>
+<br><br>
+ <%= link_to 'Edit', edit_capsule_path(@capsule) %>
+ <%= link_to 'Back', capsules_path %>
