@@ -6,7 +6,6 @@ class CapsulesController < ApplicationController
   # GET /capsules.json
   def index
     @capsules = current_user.capsules
-    #raise @capsules.inspect
   end
 
   # GET /capsules/1
@@ -27,9 +26,9 @@ class CapsulesController < ApplicationController
   # POST /capsules
   # POST /capsules.json
   def create
-    @capsule = Capsule.new(capsule_params)
+    @capsule = current_user.capsules.build(capsule_params)
     @capsule.wardrobe_item_ids = params[:wardrobe_item_id]
-  
+
     respond_to do |format|
       if @capsule.save
         format.html { redirect_to @capsule, notice: 'Capsule was successfully created.' }
