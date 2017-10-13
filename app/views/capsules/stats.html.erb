@@ -1,5 +1,4 @@
-<h1>Capsules</h1>
-
+<h1>Capsule Stats</h1>
 <table>
   <thead>
     <tr>
@@ -13,9 +12,7 @@
       <tr>
         <td><%= capsule.name %></td>
         <td><%= link_to 'Show', capsule %></td>
-        <td><%= link_to 'Edit', edit_capsule_path(capsule) %></td>
-        <td><%= link_to 'Destroy', capsule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Stats', stats_path %></td>
+        <td><%= capsule.wardrobe_items.count %></td>
       </tr>
         <% end %>
     <% else %>

@@ -8,8 +8,10 @@ Rails.application.routes.draw do
 
   root 'welcome#home'
 
+  get '/capsules/stats', to: 'capsules#stats', as: 'stats'
+
   resources :wardrobe_items do
-    resources :capsules, only: [:index, :create, :new, :edit, :show]
+    resources :capsules, only: [:index, :create, :new, :edit, :show, :stats]
   end
 
   resources :capsules do

@@ -55,6 +55,10 @@ class CapsulesController < ApplicationController
     end
   end
 
+  def stats
+    @capsules = Capsule.stats
+  end
+
   # DELETE /capsules/1
   # DELETE /capsules/1.json
   def destroy
