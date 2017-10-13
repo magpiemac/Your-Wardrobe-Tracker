@@ -7,14 +7,15 @@
   </thead>
 
   <tbody>
-    <% if @capsules.exists? %>
-    <% @capsules.each do |capsule| %>
+    <% if current_user.capsules.exists? %>
+    <% current_user.capsules.each do |capsule| %>
       <tr>
-        <td><%= capsule.name %></td>
-        <td><%= link_to 'Show', capsule %></td>
+        <th>Capsule Name:</th>
+        <td><%= link_to capsule.name, capsule_path(capsule) %>
+        <th> Number of Wardrobe Items:</th>
         <td><%= capsule.wardrobe_items.count %></td>
       </tr>
-        <% end %>
+      <% end %>
     <% else %>
      <h4>You have not created any capsules yet.</h4>
     <% end %>
