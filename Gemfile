@@ -40,6 +40,7 @@ gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
+gem 'therubyracer', '~> 0.12.2'
 
 
 group :development, :test do
