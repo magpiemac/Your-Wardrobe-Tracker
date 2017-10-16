@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/capsules/stats', to: 'capsules#stats', as: 'stats'
 
   resources :wardrobe_items do
-    resources :capsules, only: [:index, :create, :new, :edit, :show, :stats]
+    resources :capsules, only: [:index, :create, :new, :edit, :show]
   end
 
   resources :capsules do
