@@ -56,7 +56,7 @@ class CapsulesController < ApplicationController
   end
 
   def stats
-    @capsules = Capsule.stats
+    @capsules = current_user.capsules.stats
   end
 
   # DELETE /capsules/1

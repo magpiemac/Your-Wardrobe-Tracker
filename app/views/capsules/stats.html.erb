@@ -1,4 +1,4 @@
-<h1>Capsule Stats</h1>
+<h1>Capsules with Wardrobe Items Stats</h1>
 <table>
   <thead>
     <tr>
@@ -7,8 +7,8 @@
   </thead>
 
   <tbody>
-    <% if current_user.capsules.exists? %>
-    <% current_user.capsules.each do |capsule| %>
+    <% if @capsules.exists? %>
+    <% @capsules.each do |capsule| %>
       <tr>
         <th>Capsule Name:</th>
         <td><%= link_to capsule.name, capsule_path(capsule) %>
@@ -17,7 +17,7 @@
       </tr>
       <% end %>
     <% else %>
-     <h4>You have not created any capsules yet.</h4>
+     <h4>You have not created any capsules with wardrobe items yet.</h4>
     <% end %>
   </tbody>
 </table>
