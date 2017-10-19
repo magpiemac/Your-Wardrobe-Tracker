@@ -1,0 +1,5 @@
+<h4>Capsule Search Results</h4>
+
+  <% @capsules.each do |caspule| %>
+    <td><%= link_to capsule.name, capsule_path(capsule) %></td>
+  <% end %>

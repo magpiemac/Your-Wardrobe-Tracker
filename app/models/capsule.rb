@@ -11,7 +11,7 @@ class Capsule < ApplicationRecord
   end
 
   def self.search(search)
-    where('name, LIKE?', search '%#{search}%')
+    where("name LIKE ?", "%#{search}%") 
   end
 
 end

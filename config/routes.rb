@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-
+  root 'welcome#home'
+  
   resources :search
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   authenticated :user do
     root to: 'wardrobe_items#index', as: :authenticated_root
   end
-
-  root 'welcome#home'
 
   get '/capsules/stats', to: 'capsules#stats', as: 'stats'
 
