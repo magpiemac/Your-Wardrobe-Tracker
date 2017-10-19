@@ -10,4 +10,8 @@ class Capsule < ApplicationRecord
     joins(:wardrobe_items).group(:id).order("count(*) DESC")
   end
 
+  def self.search(search)
+    where('name, LIKE?', search '%#{search}%')
+  end
+
 end
