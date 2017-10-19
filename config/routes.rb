@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
   root 'welcome#home'
-  
-  resources :search
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
