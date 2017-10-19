@@ -14,9 +14,9 @@
         <li><%= link_to "Capsules", capsules_path  %></li>
         <li><%= link_to "Wardrobe Items", wardrobe_items_path %></li>
         <li><%= link_to "Edit your Account", edit_user_registration_path  %></li>
-        <li><%= form_tag(capsules_path, :method => "get", id: "search-form") do %>
-           <%= text_field_tag :search, params[:search], placeholder: "Capsule Search" %></li>
-           <%= submit_tag "Search", :name => nil%>
+        <%= form_tag(capsules_path, :method => "get", id: "search-form") do %>
+           <li><%= text_field_tag :search, params[:search], placeholder: "Capsule Search" %></li>
+           <%= submit_tag "Search"%>
           <% end %>
         <% else %>
         <li><%= link_to "Sign In", user_session_path  %></li>

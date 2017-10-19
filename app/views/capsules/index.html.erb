@@ -16,9 +16,9 @@
         <td><%= link_to 'Edit', edit_capsule_path(capsule) %></td>
         <td><%= link_to 'Destroy', capsule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-        <% end %>
-    <% else %>
-     <h4>You have not created any capsules yet.</h4>
+      <% end %>
+    <% else%>
+     <h4>Your search was invalid or you have not created any capsules yet.</h4>
     <% end %>
   </tbody>
 </table>

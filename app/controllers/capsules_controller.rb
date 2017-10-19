@@ -7,7 +7,7 @@ class CapsulesController < ApplicationController
   def index
     @capsules = current_user.capsules
     if params[:search]
-      @capsules = Capsule.search(params[:search]).order("created_at DESC")
+      @capsules = current_user.capsules.search(params[:search]).order("created_at DESC")
     else
       @capsules = current_user.capsules.order("created_at DESC")
     end
