@@ -1,4 +1,5 @@
 class WardrobeItemSerializer < ActiveModel::Serializer
   attributes :id, :item, :description
-  belongs_to :capsule
+  has_many :wardrobe_item_capsules
+  has_many :capsules, through: :wardrobe_item_capsules
 end
