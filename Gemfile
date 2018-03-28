@@ -41,6 +41,7 @@ gem 'devise-bootstrap-views'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
 gem 'therubyracer', '~> 0.12.2'
+gem 'active_model_serializers'
 
 
 group :development, :test do
