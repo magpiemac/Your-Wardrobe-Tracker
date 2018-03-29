@@ -17,6 +17,10 @@ class CapsulesController < ApplicationController
   # GET /capsules/1.json
   def show
     @wardrobe_items = @capsule.wardrobe_items
+    respond_to do |format|
+        format.html
+        format.json {render json: @wardrobe_items}
+    end
   end
 
   # GET /capsules/new
