@@ -1,9 +1,11 @@
+//Document Ready
+
 $(() => {
   bindClickHandlers()
 })
 
 const bindClickHandlers = () => {
-  $('.wardrobe_items_path').on('click', (e) => {
+  $('.all_wardrobe_items').on('click', (e) => {
     e.preventDefault()
     console.log('hello')
   })
