@@ -1,3 +1,10 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(() => {
+  bindClickHandlers()
+})
+
+const bindClickHandlers = () => {
+  $('.wardrobe_items_path').on('click', (e) => {
+    e.preventDefault()
+    console.log('hello')
+  })
+}
