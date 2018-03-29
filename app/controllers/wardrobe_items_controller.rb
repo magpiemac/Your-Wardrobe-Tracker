@@ -6,6 +6,10 @@ class WardrobeItemsController < ApplicationController
   # GET /wardrobe_items.json
   def index
     @wardrobe_items = current_user.wardrobe_items
+    respond_to do |format|
+        format.html
+        format.json {render json: @wardrobe_items}
+    end
   end
 
   # GET /wardrobe_items/1
