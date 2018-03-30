@@ -6,11 +6,15 @@ class CapsulesController < ApplicationController
   # GET /capsules.json
   def index
     @capsules = current_user.capsules
+    respond_to do |format|
+        format.html
+        format.json {render json: @capsules}
     if params[:search]
       @capsules = current_user.capsules.search(params[:search]).order("created_at DESC")
     else
       @capsules = current_user.capsules.order("created_at DESC")
     end
+   end
   end
 
   # GET /capsules/1
