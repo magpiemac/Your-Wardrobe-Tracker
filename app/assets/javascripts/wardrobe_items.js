@@ -28,9 +28,9 @@ const bindClickHandlers = () => {
       credentials: "include"})
         .then(res => res.json())
         .then(wardrobe_item => {
-            let newWardrobe_item = new Wardrobe_item(wardrobe_item)
-            let wardrobe_itemHtml = newWardrobe_item.formatShow()
-            $('#app-container').append(wardrobe_itemHtml)
+          let newWardrobe_item = new Wardrobe_item(wardrobe_item)
+          let wardrobe_itemHtml = newWardrobe_item.formatIndex()
+          $('#app-container').append(wardrobe_itemHtml)
         })
     })
 }
