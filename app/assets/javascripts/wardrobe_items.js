@@ -20,7 +20,22 @@ const bindClickHandlers = () => {
       })
     })
   })
+  $(document).on('click', ".show_link", function(e) {
+    e.preventDefault()
+      $('#app-container').html(' ')
+      let id = $(this).attr('data-id');
+      fetch(`/wardrobe_items/${id}.json`, {
+      credentials: "include"})
+        .then(res => res.json())
+        .then(wardrobe_item => {
+            let newWardrobe_item = new Wardrobe_item(wardrobe_item)
+            let wardrobe_itemHtml = newWardrobe_item.formatShow()
+            $('#app-container').append(wardrobe_itemHtml)
+        })
+    })
 }
+
+
 
 //constructor function
 
@@ -36,7 +51,15 @@ function Wardrobe_item(wardrobe_item) {
 //format the rest of html
 Wardrobe_item.prototype.formatIndex = function() {
   let wardrobe_itemHtml = `
-    <a href="/wardrobe_items/${this.id}" class="show_link"<h1>${this.item}</h1></a>
-  `
+    <a href="/wardrobe_items/${this.id}" data-id="${this.id}" class="show_link"><h2>${this.item}</h2></a>
+  ` //fix links, add other display items
+    return wardrobe_itemHtml
+};
+
+Wardrobe_item.prototype.formatShow = function() {
+  let wardrobe_itemHtml = `
+    <h2>${this.id}</h2>
+    <h2>${this.name}</h2>
+  ` //fix links, add other display items
     return wardrobe_itemHtml
 };
