@@ -5,6 +5,7 @@ $(() => {
 })
 
 const bindClickHandlers = () => {
+  //get wardrobe_item idex
   $('.all_wardrobe_items').on('click', (e) => {
     e.preventDefault()
     history.pushState(null, null, "wardrobe_item")
@@ -20,6 +21,7 @@ const bindClickHandlers = () => {
       })
     })
   })
+  //show single wardrobe_item
   $(document).on('click', ".show_link", function(e) {
     e.preventDefault()
       $('#app-container').html(' ')
@@ -34,13 +36,13 @@ const bindClickHandlers = () => {
           $('#app-container').append(wardrobe_itemHtml)
         })
       })
-
+// create resource
       $('#new_wardrobe_item').on('submit', function(e){
         e.preventDefault()
+
         console.log('submitting new item')
         //send the ajax or fetch post request to create the new item and when you get the response back from the
         //server append that new item to the DOM
-
         $('#app-container').html('')
         $('#app-container').append(`<h1>New Item will display here</h1>`)
       })
@@ -75,5 +77,3 @@ Wardrobe_item.prototype.formatShow = function() {
   `
     return wardrobe_itemHtml
 };
-
-// create resource
