@@ -70,11 +70,10 @@ Wardrobe_item.prototype.formatIndex = function() {
 Wardrobe_item.prototype.formatShow = function() {
   let wardrobe_itemHtml = `
     <h2>${this.item}</h2>
-    <h2>${this.decription}</h2>
-    <h2>${this.wardrobe_item}</h2>
+    <h3>- ${this.description}</h3>
+    <button class="js-more" data-id="<%= wardrobe_item.id %>">Next</button>
   `
     return wardrobe_itemHtml
-    // <%= button_tag 'Next', class: 'js-next', data: {id: wardrobe_item.id} %>
 };
 
 // create resource
