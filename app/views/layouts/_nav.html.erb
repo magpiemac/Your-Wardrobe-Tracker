@@ -13,6 +13,7 @@
         <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
         <li><%= link_to "Capsules", capsules_path  %></li>
         <li><%= link_to "Wardrobe Items", wardrobe_items_path, class: "all_wardrobe_items" %></li>
+        <li><%= link_to "Create New Wardrobe Item", new_wardrobe_item_path %></li>
         <li><%= link_to "Edit your Account", edit_user_registration_path  %></li>
         <%= form_tag(capsules_path, :method => "get", id: "search-form") do %>
            <li><%= text_field_tag :search, params[:search], placeholder: "Capsule Search" %></li>

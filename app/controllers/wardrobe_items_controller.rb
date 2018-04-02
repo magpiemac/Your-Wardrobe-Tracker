@@ -41,7 +41,7 @@ class WardrobeItemsController < ApplicationController
     respond_to do |format|
       if @wardrobe_item.save
         format.html { redirect_to @wardrobe_item, notice: 'Wardrobe item was successfully created.' }
-        format.json { render :show, status: :created, location: @wardrobe_item }
+        format.json { render json: @wardrobe_item }
       else
         format.html { render :new }
         format.json { render json: @wardrobe_item.errors, status: :unprocessable_entity }
