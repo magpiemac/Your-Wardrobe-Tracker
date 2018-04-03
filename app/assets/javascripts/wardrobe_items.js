@@ -46,8 +46,10 @@ const bindClickHandlers = () => {
       method: 'POST',
       data: $(this).serialize(),
       success: function(data) {
-        console.log(data.id, data.item, data.description)
-        $('#app-container').append(`<h2>${data.item}, ${data.description}</h2>`)
+        //console.log(data.id, data.item, data.description)
+        const newWardrobeItem = new Wardrobe_item(data)
+        //console.log(newWardrobeItem)
+        $('#app-container').append(newWardrobeItem.formatShow())
       }
     })
   })
@@ -55,10 +57,20 @@ const bindClickHandlers = () => {
 //show next and previous wardrobe item
   $(document).on('click', '.js-prev', function(e) {
     let id = $(this).attr('data-id'); //use jQuery to grab id of post
-      fetch(`/wardrobe_items/${id}.json`, {
+    console.log(id)
+      fetch(`/wardrobe_items/${id - 1}.json`, {
         credentials: "include"})
-        .then(res => console.log(res.json()))
-  })
+        .then(res => res.json())
+        .then(item => console.log(item)) //TEST WITH SECOND ITEM!!!!
+        // .then(res => res.json())
+        // .then(wardrobe_item => {
+        //   console.log(wardrobe_item)
+        //   let newWardrobe_item = new Wardrobe_item(wardrobe_item)
+        //   let wardrobe_itemHtml = newWardrobe_item.formatShow()
+        //   $('#app-container').append(wardrobe_itemHtml)
+        // })
+    })
+
 
   $(document).on('click', '.js-next', function(e) {
     let id = $(this).attr('data-id');
@@ -93,8 +105,8 @@ Wardrobe_item.prototype.formatShow = function() {
   let wardrobe_itemHtml = `
     <h2>${this.item}</h2>
     <h3>- ${this.description}</h3>
-    <button class="js-next" data-id={id: @wardrobe_item.id}>Next</button>
-    <button class="js-prev" data-id={id: @wardrobe_item.id}>Previous</button>
+    <button class="js-next" data-id=${this.id}>Next</button>
+    <button class="js-prev" data-id=${this.id}>Previous</button>
   `
   return wardrobe_itemHtml
 };
