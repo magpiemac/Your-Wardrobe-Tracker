@@ -1,4 +1,3 @@
-
 //document.ready
 $(() => {
   bindClickHandlers()
@@ -10,7 +9,8 @@ const bindClickHandlers = () => {
     e.preventDefault()
     history.pushState(null, null, "wardrobe_item")
     fetch('/wardrobe_items.json', {
-      credentials: "include"})
+        credentials: "include"
+      })
       .then(res => res.json())
       .then(wardrobe_items => {
         $('#app-container').html(' ')
@@ -18,35 +18,52 @@ const bindClickHandlers = () => {
           let newWardrobe_item = new Wardrobe_item(wardrobe_item)
           let wardrobe_itemHtml = newWardrobe_item.formatIndex()
           $('#app-container').append(wardrobe_itemHtml)
+        })
       })
-    })
   })
   //show single wardrobe_item
   $(document).on('click', ".show_link", function(e) {
     e.preventDefault()
-      $('#app-container').html(' ')
-      let id = $(this).attr('data-id');
-      fetch(`/wardrobe_items/${id}/capsules/${id}.json`, {
-        credentials: "include"})
-        .then(res => res.json())
-        .then(wardrobe_item => {
-          console.log(wardrobe_item)
-          let newWardrobe_item = new Wardrobe_item(wardrobe_item[0])
-          let wardrobe_itemHtml = newWardrobe_item.formatShow()
-          $('#app-container').append(wardrobe_itemHtml)
-        })
+    $('#app-container').html(' ')
+    let id = $(this).attr('data-id');
+    fetch(`/wardrobe_items/${id}/capsules/${id}.json`, {
+        credentials: "include"
       })
-// create resource
+      .then(res => res.json())
+      .then(wardrobe_item => {
+        console.log(wardrobe_item)
+        let newWardrobe_item = new Wardrobe_item(wardrobe_item[0])
+        let wardrobe_itemHtml = newWardrobe_item.formatShow()
+        $('#app-container').append(wardrobe_itemHtml)
+      })
+  })
+  // create resource
+
+  $('#new_wardrobe_item').on('submit', function(e) {
+    e.preventDefault()
+    $('#app-container').html(' ')
+    $.ajax({
+      url: '/wardrobe_items.json',
+      method: 'POST',
+      data: $(this).serialize(),
+      success: function(data) {
+        console.log(data.id, data.item, data.description)
+        $('#app-container').append(`<h2>${data.item}, ${data.description}</h2>`)
+      }
+    })
+  })
 
 
-//   $('.js-next').on('click', function(e) {
-//     console.log('prev clicked')
-// })
+
+
+  //   $('.js-next').on('click', function(e) {
+  //     console.log('prev clicked')
+  // })
 }
-        // send the ajax or fetch post request to create the new item and when you get the response back from the
-        // server append that new item to the DOM
-    //     $('#app-container').append(`<h1>New Item will display here</h1>`)
-    //   })
+// send the ajax or fetch post request to create the new item and when you get the response back from the
+// server append that new item to the DOM
+//     $('#app-container').append(`<h1>New Item will display here</h1>`)
+//   })
 
 //constructor function
 
@@ -68,7 +85,7 @@ Wardrobe_item.prototype.formatIndex = function() {
     <a href="/wardrobe_items/${this.id}" data-id="${this.id}" class="show_link"><h2>${this.item}</h2></a>
     <h3> -${this.description}</h3>
   ` //fix links, add other display items
-    return wardrobe_itemHtml
+  return wardrobe_itemHtml
 };
 
 //show view formatter
@@ -78,5 +95,5 @@ Wardrobe_item.prototype.formatShow = function() {
     <h3>- ${this.description}</h3>
     <button class="js-next" data-id="${this.id}">Next</button>
   `
-    return wardrobe_itemHtml
+  return wardrobe_itemHtml
 };
