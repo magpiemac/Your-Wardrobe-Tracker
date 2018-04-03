@@ -52,13 +52,6 @@ const bindClickHandlers = () => {
             $('#app-container').append(wardrobe_itemHtml)
           })
         })
-
-
-          // $('#app-container').html(' ')
-          //     let newWardrobe_item = new Wardrobe_item(wardrobe_item[0])
-          //     let wardrobe_itemHtml = newWardrobe_item.formatShow()
-          //     $('#app-container').append(wardrobe_itemHtml)
-
 }
 
         // send the ajax or fetch post request to create the new item and when you get the response back from the
