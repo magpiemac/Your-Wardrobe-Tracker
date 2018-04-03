@@ -39,14 +39,31 @@ const bindClickHandlers = () => {
 // create resource
       $('#new_wardrobe_item').on('submit', function(e){
         e.preventDefault()
+        // $('#app-container').html(' ')
+        let id = $(this).attr('data-id');
+        fetch(`/wardrobe_items/${id}.json`, {
+          credentials: "include"})
+          .then(res => res.json())
+          .then(wardrobe_item => {
+            console.log(wardrobe_item)
+            let newWardrobe_item = new Wardrobe_item(wardrobe_item[0])
+            let wardrobe_itemHtml = newWardrobe_item.formatShow()
+            $('#app-container').append(wardrobe_itemHtml)
+          })
+        })
 
-        console.log('submitting new item')
-        //send the ajax or fetch post request to create the new item and when you get the response back from the
-        //server append that new item to the DOM
-        $('#app-container').html('')
-        $('#app-container').append(`<h1>New Item will display here</h1>`)
-      })
-    }
+
+          // $('#app-container').html(' ')
+          //     let newWardrobe_item = new Wardrobe_item(wardrobe_item[0])
+          //     let wardrobe_itemHtml = newWardrobe_item.formatShow()
+          //     $('#app-container').append(wardrobe_itemHtml)
+
+}
+
+        // send the ajax or fetch post request to create the new item and when you get the response back from the
+        // server append that new item to the DOM
+    //     $('#app-container').append(`<h1>New Item will display here</h1>`)
+    //   })
 
 //constructor function
 
@@ -61,6 +78,8 @@ function Wardrobe_item(wardrobe_item) {
 //every instance of Wardrobe_item can call the .formatIndex function.
 //cannot use arrow function with prototype(get window object)
 //format the rest of html
+
+//index view formatter
 Wardrobe_item.prototype.formatIndex = function() {
   let wardrobe_itemHtml = `
     <a href="/wardrobe_items/${this.id}" data-id="${this.id}" class="show_link"><h2>${this.item}</h2></a>
@@ -69,6 +88,7 @@ Wardrobe_item.prototype.formatIndex = function() {
     return wardrobe_itemHtml
 };
 
+//show view formatter
 Wardrobe_item.prototype.formatShow = function() {
   let wardrobe_itemHtml = `
     <h2>${this.item}</h2>
