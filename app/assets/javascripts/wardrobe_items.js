@@ -54,7 +54,8 @@ const bindClickHandlers = () => {
 
 //show next and previous wardrobe item
   $(document).on('click', '.js-prev', function(e) {
-      console.log('prev clicked')
+    let id = $(this).attr('data-id');
+      console.log('id')
   })
 }
 
@@ -85,8 +86,8 @@ Wardrobe_item.prototype.formatShow = function() {
   let wardrobe_itemHtml = `
     <h2>${this.item}</h2>
     <h3>- ${this.description}</h3>
-    <button class="js-next" data-id="${this.id}">Next</button>
-    <button class="js-prev" data-id="${this.id}">Previous</button>
+    <button class="js-next" data-id={id: @wardrobe_item.id}>Next</button>
+    <button class="js-prev" data-id={id: @wardrobe_item.id}>Previous</button>
   `
   return wardrobe_itemHtml
 };
