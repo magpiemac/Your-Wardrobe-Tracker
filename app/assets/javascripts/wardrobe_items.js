@@ -37,9 +37,10 @@ const bindClickHandlers = () => {
         })
       })
 // create resource
-      $('#new_wardrobe_item').on('submit', function(e){
+  $(document).on('submit', '#new_wardrobe_item', function(e){
+      // $('#new_wardrobe_item').on('submit', function(e){
         e.preventDefault()
-        // $('#app-container').html(' ')
+        $('#app-container').html(' ')
         let id = $(this).attr('data-id');
         fetch(`/wardrobe_items/${id}.json`, {
           credentials: "include"})
