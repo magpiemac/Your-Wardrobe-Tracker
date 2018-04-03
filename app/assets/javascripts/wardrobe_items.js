@@ -54,8 +54,16 @@ const bindClickHandlers = () => {
 
 //show next and previous wardrobe item
   $(document).on('click', '.js-prev', function(e) {
+    let id = $(this).attr('data-id'); //use jQuery to grab id of post
+    fetch(`/wardrobe_items/${id}.json`, {
+        credentials: "include"
+      })
+      console.log(id)
+  })
+
+  $(document).on('click', '.js-next', function(e) {
     let id = $(this).attr('data-id');
-      console.log('id')
+      console.log(id)
   })
 }
 
