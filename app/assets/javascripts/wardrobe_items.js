@@ -37,23 +37,12 @@ const bindClickHandlers = () => {
         })
       })
 // create resource
-  $(document).on('submit', '#new_wardrobe_item', function(e){
-      // $('#new_wardrobe_item').on('submit', function(e){
-        e.preventDefault()
-        $('#app-container').html(' ')
-        let id = $(this).attr('data-id');
-        fetch(`/wardrobe_items/${id}.json`, {
-          credentials: "include"})
-          .then(res => res.json())
-          .then(wardrobe_item => {
-            console.log(wardrobe_item)
-            let newWardrobe_item = new Wardrobe_item(wardrobe_item[0])
-            let wardrobe_itemHtml = newWardrobe_item.formatShow()
-            $('#app-container').append(wardrobe_itemHtml)
-          })
-        })
-}
 
+
+//   $('.js-next').on('click', function(e) {
+//     console.log('prev clicked')
+// })
+}
         // send the ajax or fetch post request to create the new item and when you get the response back from the
         // server append that new item to the DOM
     //     $('#app-container').append(`<h1>New Item will display here</h1>`)
@@ -87,7 +76,7 @@ Wardrobe_item.prototype.formatShow = function() {
   let wardrobe_itemHtml = `
     <h2>${this.item}</h2>
     <h3>- ${this.description}</h3>
-    <button class="js-more" data-id="<%= wardrobe_item.id %>">Next</button>
+    <button class="js-next" data-id="${this.id}">Next</button>
   `
     return wardrobe_itemHtml
 };
