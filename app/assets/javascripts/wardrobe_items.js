@@ -38,7 +38,6 @@ const bindClickHandlers = () => {
       })
   })
   // create resource
-
   $('#new_wardrobe_item').on('submit', function(e) {
     e.preventDefault()
     $('#app-container').html(' ')
@@ -53,20 +52,12 @@ const bindClickHandlers = () => {
     })
   })
 
-
-
-
   //   $('.js-next').on('click', function(e) {
   //     console.log('prev clicked')
   // })
 }
-// send the ajax or fetch post request to create the new item and when you get the response back from the
-// server append that new item to the DOM
-//     $('#app-container').append(`<h1>New Item will display here</h1>`)
-//   })
 
 //constructor function
-
 function Wardrobe_item(wardrobe_item) {
   this.id = wardrobe_item.id
   this.item = wardrobe_item.item
