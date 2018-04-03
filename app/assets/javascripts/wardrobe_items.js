@@ -52,9 +52,10 @@ const bindClickHandlers = () => {
     })
   })
 
-  //   $('.js-next').on('click', function(e) {
-  //     console.log('prev clicked')
-  // })
+//show next wardrobe item
+  $(document).on('click', '.js-next', function(e) {
+      console.log('prev clicked')
+  })
 }
 
 //constructor function
