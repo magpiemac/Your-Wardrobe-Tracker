@@ -1,4 +1,4 @@
-//document.ready
+document.ready
 $(() => {
   bindClickHandlers()
 })
@@ -46,17 +46,14 @@ const bindClickHandlers = () => {
       method: 'POST',
       data: $(this).serialize(),
       success: function(data) {
-        //console.log(data.id, data.item, data.description)
         const newWardrobeItem = new Wardrobe_item(data)
-        //console.log(newWardrobeItem)
         $('#app-container').append(newWardrobeItem.formatShow())
       }
     })
   })
 
-//show next and previous wardrobe item
+//previous wardrobe item
   $(document).on('click', '.js-prev', function(e) {
-    // e.preventDefault()
     $('#app-container').html(' ')
     let id = $(this).attr('data-id'); //use jQuery to grab id of post
     console.log(id)
@@ -72,11 +69,21 @@ const bindClickHandlers = () => {
         })
     })
 
-
+//show next wardrobe_item
   $(document).on('click', '.js-next', function(e) {
-    let id = $(this).attr('data-id');
-      console.log(id)
-  })
+    $('#app-container').html(' ')
+    let id = $(this).attr('data-id'); //use jQuery to grab id of post
+    console.log(id)
+      fetch(`/wardrobe_items/${id + 1}.json`, {
+        credentials: "include"})
+        .then(res => res.json())
+        .then(wardrobe_item => {
+          console.log(wardrobe_item)
+          let newWardrobe_item = new Wardrobe_item(wardrobe_item)
+          let wardrobe_itemHtml = newWardrobe_item.formatShow()
+          $('#app-container').append(wardrobe_itemHtml)
+        })
+    })
 }
 
 //constructor function
