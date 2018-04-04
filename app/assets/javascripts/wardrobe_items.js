@@ -61,14 +61,13 @@ const bindClickHandlers = () => {
       fetch(`/wardrobe_items/${id - 1}.json`, {
         credentials: "include"})
         .then(res => res.json())
-        .then(item => console.log(item)) //TEST WITH SECOND ITEM!!!!
-        // .then(res => res.json())
-        // .then(wardrobe_item => {
-        //   console.log(wardrobe_item)
-        //   let newWardrobe_item = new Wardrobe_item(wardrobe_item)
-        //   let wardrobe_itemHtml = newWardrobe_item.formatShow()
-        //   $('#app-container').append(wardrobe_itemHtml)
-        // })
+        //.then(item => console.log(item)) //TEST WITH SECOND ITEM!!!!
+        .then(wardrobe_item => {
+          console.log(wardrobe_item)
+          let newWardrobe_item = new Wardrobe_item(wardrobe_item)
+          let wardrobe_itemHtml = newWardrobe_item.formatShow()
+          $('#app-container').append(wardrobe_itemHtml)
+        })
     })
 
 
