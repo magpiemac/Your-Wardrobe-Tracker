@@ -2,7 +2,7 @@
 
 Overview
 
-Your Wardrobe Tracker allows you to track your wardrobe items and their accompanying descriptions. Your wardrobe items can be placed into multiple capsules that you also create and track.
+Your Wardrobe Tracker with JavaScript API allows you to track your wardrobe items and their accompanying descriptions. Your wardrobe items can be placed into multiple capsules that you also create and track.
 Logging In or Registering
 On the main page, you must sign up or log in to add wardrobe items and capsules. You may also log in using Facebook. After you have logged in, you will be directed to your main wardrobe items user page which will display all your existing wardrobe items and allow you to create, edit or delete those wardrobe items.
 
@@ -21,4 +21,4 @@ License
 
 This project is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
-# Your-Wardrobe-Tracker
+# Your-Wardrobe-Tracker-With-JS-API
