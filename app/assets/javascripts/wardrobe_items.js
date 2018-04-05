@@ -104,6 +104,7 @@ Wardrobe_item.prototype.formatIndex = function() {
   let wardrobe_itemHtml = `
     <a href="/wardrobe_items/${this.id}" data-id="${this.id}" class="show_link"><h2>${this.item}</h2></a>
     <h3> -${this.description}</h3>
+    <h3> -${this.capsules[0].name}</h3>
   ` //fix links, add other display items
   return wardrobe_itemHtml
 };
@@ -112,7 +113,8 @@ Wardrobe_item.prototype.formatIndex = function() {
 Wardrobe_item.prototype.formatShow = function() {
   let wardrobe_itemHtml = `
     <h2>${this.item}</h2>
-    <h3>- ${this.description}</h3>
+    <h3> -${this.description}</h3>
+    <h3> -${this.capsules[0].name}</h3>
     <button class="js-next" data-id=${this.id}>Next</button>
     <button class="js-prev" data-id=${this.id}>Previous</button>
   `
