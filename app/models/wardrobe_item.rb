@@ -12,5 +12,4 @@ class WardrobeItem < ApplicationRecord
      capsules << capsule if capsule.persisted?
     end
   end
-
 end

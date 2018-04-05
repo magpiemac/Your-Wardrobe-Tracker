@@ -24,6 +24,7 @@ class WardrobeItemsController < ApplicationController
 
 def next
     @wardrobe_item = WardrobeItem.find(params[:id])
+    # @next_wardrobe_item = @wardrobe_item.find('id >' :id)
     respond_to do |format|
         format.html
         format.json {render json: @wardrobe_item}

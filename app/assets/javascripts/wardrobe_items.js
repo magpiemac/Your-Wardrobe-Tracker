@@ -52,38 +52,42 @@ const bindClickHandlers = () => {
     })
   })
 
-//previous wardrobe item
+  //previous wardrobe item
   $(document).on('click', '.js-prev', function(e) {
     $('#app-container').html(' ')
-    let id = $(this).attr('data-id'); //use jQuery to grab id of post
+    let id = +$(this).attr('data-id');
+    let nextId = id - 1
+    // let id = $(this).attr('data-id'); //use jQuery to grab id of post
     console.log(id)
-      fetch(`/wardrobe_items/${id - 1}.json`, {
-        credentials: "include"})
-        .then(res => res.json())
-        //.then(item => console.log(item)) //TEST WITH SECOND ITEM!!!!
-        .then(wardrobe_item => {
-          console.log(wardrobe_item)
-          let newWardrobe_item = new Wardrobe_item(wardrobe_item)
-          let wardrobe_itemHtml = newWardrobe_item.formatShow()
-          $('#app-container').append(wardrobe_itemHtml)
-        })
-    })
+    fetch(`/wardrobe_items/${nextId}/next.json`, {
+        credentials: "include"
+      })
+      .then(res => res.json())
+      .then(wardrobe_item => {
+        console.log(wardrobe_item)
+        let newWardrobe_item = new Wardrobe_item(wardrobe_item)
+        let wardrobe_itemHtml = newWardrobe_item.formatShow()
+        $('#app-container').append(wardrobe_itemHtml)
+      })
+  })
 
-//show next wardrobe_item
+  //show next wardrobe_item
   $(document).on('click', '.js-next', function(e) {
     $('#app-container').html(' ')
-    let id = $(this).attr('data-id'); //use jQuery to grab id of post
-    console.log(id)
-      fetch(`/wardrobe_items/${id}/next.json`, {
-        credentials: "include"})
-        .then(res => res.json())
-        .then(wardrobe_item => {
-          console.log(wardrobe_item)
-          let newWardrobe_item = new Wardrobe_item(wardrobe_item)
-          let wardrobe_itemHtml = newWardrobe_item.formatShow()
-          $('#app-container').append(wardrobe_itemHtml)
-        })
-    })
+    let id = +$(this).attr('data-id');
+    let nextId = id + 1
+    console.log(nextId)
+    fetch(`/wardrobe_items/${nextId}/next.json`, {
+        credentials: "include"
+      })
+      .then(res => res.json())
+      .then(wardrobe_item => {
+        console.log(wardrobe_item)
+        let newWardrobe_item = new Wardrobe_item(wardrobe_item)
+        let wardrobe_itemHtml = newWardrobe_item.formatShow()
+        $('#app-container').append(wardrobe_itemHtml)
+      })
+  })
 }
 
 //constructor function
@@ -94,10 +98,6 @@ function Wardrobe_item(wardrobe_item) {
   this.wardrobe_item_capsules = wardrobe_item.wardrobe_item_capsules
   this.capsules = wardrobe_item.capsules
 }
-
-//every instance of Wardrobe_item can call the .formatIndex function.
-//cannot use arrow function with prototype(get window object)
-//format the rest of html
 
 //index view formatter
 Wardrobe_item.prototype.formatIndex = function() {
