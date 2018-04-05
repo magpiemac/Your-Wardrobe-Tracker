@@ -18,7 +18,7 @@ class WardrobeItemsController < ApplicationController
     @capsules = @wardrobe_item.capsules
     respond_to do |format|
         format.html
-        format.json {render json: @capsules}
+        format.json {render json: @wardrobe_item}
     end
   end
 
