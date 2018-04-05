@@ -53,37 +53,37 @@ const bindClickHandlers = () => {
   })
 
 //previous wardrobe item
-  // $(document).on('click', '.js-prev', function(e) {
-  //   $('#app-container').html(' ')
-  //   let id = $(this).attr('data-id'); //use jQuery to grab id of post
-  //   console.log(id)
-  //     fetch(`/wardrobe_items/${id - 1}.json`, {
-  //       credentials: "include"})
-  //       .then(res => res.json())
-  //       //.then(item => console.log(item)) //TEST WITH SECOND ITEM!!!!
-  //       .then(wardrobe_item => {
-  //         console.log(wardrobe_item)
-  //         let newWardrobe_item = new Wardrobe_item(wardrobe_item)
-  //         let wardrobe_itemHtml = newWardrobe_item.formatShow()
-  //         $('#app-container').append(wardrobe_itemHtml)
-  //       })
-  //   })
+  $(document).on('click', '.js-prev', function(e) {
+    $('#app-container').html(' ')
+    let id = $(this).attr('data-id'); //use jQuery to grab id of post
+    console.log(id)
+      fetch(`/wardrobe_items/${id - 1}.json`, {
+        credentials: "include"})
+        .then(res => res.json())
+        //.then(item => console.log(item)) //TEST WITH SECOND ITEM!!!!
+        .then(wardrobe_item => {
+          console.log(wardrobe_item)
+          let newWardrobe_item = new Wardrobe_item(wardrobe_item)
+          let wardrobe_itemHtml = newWardrobe_item.formatShow()
+          $('#app-container').append(wardrobe_itemHtml)
+        })
+    })
 
 //show next wardrobe_item
-  // $(document).on('click', '.js-next', function(e) {
-  //   $('#app-container').html(' ')
-  //   let id = $(this).attr('data-id'); //use jQuery to grab id of post
-  //   console.log(id)
-  //     fetch(`/wardrobe_items/${id + 1}.json`, {
-  //       credentials: "include"})
-  //       .then(res => res.json())
-  //       .then(wardrobe_item => {
-  //         console.log(wardrobe_item)
-  //         let newWardrobe_item = new Wardrobe_item(wardrobe_item)
-  //         let wardrobe_itemHtml = newWardrobe_item.formatShow()
-  //         $('#app-container').append(wardrobe_itemHtml)
-  //       })
-  //   })
+  $(document).on('click', '.js-next', function(e) {
+    $('#app-container').html(' ')
+    let id = $(this).attr('data-id'); //use jQuery to grab id of post
+    console.log(id)
+      fetch(`/wardrobe_items/${id}/next.json`, {
+        credentials: "include"})
+        .then(res => res.json())
+        .then(wardrobe_item => {
+          console.log(wardrobe_item)
+          let newWardrobe_item = new Wardrobe_item(wardrobe_item)
+          let wardrobe_itemHtml = newWardrobe_item.formatShow()
+          $('#app-container').append(wardrobe_itemHtml)
+        })
+    })
 }
 
 //constructor function

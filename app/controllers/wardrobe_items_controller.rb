@@ -1,6 +1,6 @@
 class WardrobeItemsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_wardrobe_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_wardrobe_item, only: [:show, :edit, :update, :destroy, :next]
 
   # GET /wardrobe_items
   # GET /wardrobe_items.json
@@ -21,6 +21,15 @@ class WardrobeItemsController < ApplicationController
         format.json {render json: @wardrobe_item}
     end
   end
+
+def next
+    @wardrobe_item = WardrobeItem.find(params[:id])
+    respond_to do |format|
+        format.html
+        format.json {render json: @wardrobe_item}
+    end
+end
+
 
   # GET /wardrobe_items/new
   def new
