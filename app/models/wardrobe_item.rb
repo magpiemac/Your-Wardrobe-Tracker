@@ -14,22 +14,12 @@ class WardrobeItem < ApplicationRecord
   end
 
   def next
-    wardrobe_item = WardrobeItem.where('id < ?', id).last
-
-    if wardrobe_item
-      wardrobe_item
-    else
-      WardrobeItem.last
-    end
+    wardrobe_item = WardrobeItem.where('id > ?', id).first
+    wardrobe_item = wardrobe_item ? wardrobe_item : WardrobeItem.first
   end
 
   def previous
-    wardrobe_item = WardrobeItem.where('id > ?', id).first
-
-    if wardrobe_item
-      wardrobe_item
-    else
-      WardrobeItem.first
-    end
+    wardrobe_item = WardrobeItem.where('id < ?', id).last
+    wardrobe_item = wardrobe_item ? wardrobe_item : WardrobeItem.last
   end
 end

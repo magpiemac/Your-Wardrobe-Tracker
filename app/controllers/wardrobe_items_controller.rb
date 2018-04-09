@@ -22,6 +22,8 @@ class WardrobeItemsController < ApplicationController
     end
   end
 
+
+  # GET /wardrobe_items/1/next.json
 def next
     @next_wardrobe_item = @wardrobe_item.next
     respond_to do |format|
@@ -30,6 +32,7 @@ def next
     end
 end
 
+# GET /wardrobe_items/1/previous.json
 def previous
     @previous_wardrobe_item = @wardrobe_item.previous
     respond_to do |format|
