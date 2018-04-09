@@ -56,10 +56,10 @@ const bindClickHandlers = () => {
   $(document).on('click', '.js-prev', function(e) {
     $('#app-container').html(' ')
     let id = +$(this).attr('data-id');
-    let nextId = id - 1
+    // let nextId = id - 1
     // let id = $(this).attr('data-id'); //use jQuery to grab id of post
-    console.log(id)
-    fetch(`/wardrobe_items/${nextId}/next.json`, {
+    // console.log(id)
+    fetch(`/wardrobe_items/${id}/previous.json`, {
         credentials: "include"
       })
       .then(res => res.json())
@@ -75,9 +75,9 @@ const bindClickHandlers = () => {
   $(document).on('click', '.js-next', function(e) {
     $('#app-container').html(' ')
     let id = +$(this).attr('data-id');
-    let nextId = id + 1
-    console.log(nextId)
-    fetch(`/wardrobe_items/${nextId}/next.json`, {
+    // let nextId = id + 1
+    // console.log(nextId)
+    fetch(`/wardrobe_items/${id}/next.json`, {
         credentials: "include"
       })
       .then(res => res.json())

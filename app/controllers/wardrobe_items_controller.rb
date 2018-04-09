@@ -1,6 +1,6 @@
 class WardrobeItemsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_wardrobe_item, only: [:show, :edit, :update, :destroy, :next]
+  before_action :set_wardrobe_item, only: [:show, :edit, :update, :destroy, :next, :previous]
 
   # GET /wardrobe_items
   # GET /wardrobe_items.json
@@ -23,14 +23,20 @@ class WardrobeItemsController < ApplicationController
   end
 
 def next
-    @wardrobe_item = WardrobeItem.find(params[:id])
-    # @next_wardrobe_item = @wardrobe_item.find('id >' :id)
+    @next_wardrobe_item = @wardrobe_item.next
     respond_to do |format|
         format.html
-        format.json {render json: @wardrobe_item}
+        format.json {render json: @next_wardrobe_item}
     end
 end
 
+def previous
+    @previous_wardrobe_item = @wardrobe_item.previous
+    respond_to do |format|
+        format.html
+        format.json {render json: @previous_wardrobe_item}
+    end
+end
 
   # GET /wardrobe_items/new
   def new

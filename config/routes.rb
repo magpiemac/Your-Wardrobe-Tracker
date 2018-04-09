@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   end
 
   get '/capsules/stats', to: 'capsules#stats', as: 'stats'
-  
+
   get '/wardrobe_items/:id/next', to: 'wardrobe_items#next'
+
+  get '/wardrobe_items/:id/previous', to: 'wardrobe_items#previous'
 
   resources :wardrobe_items do
     resources :capsules, only: [:index, :create, :new, :edit, :show]

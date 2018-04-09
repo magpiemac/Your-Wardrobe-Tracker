@@ -12,4 +12,24 @@ class WardrobeItem < ApplicationRecord
      capsules << capsule if capsule.persisted?
     end
   end
+
+  def next
+    wardrobe_item = WardrobeItem.where('id < ?', id).last
+
+    if wardrobe_item
+      wardrobe_item
+    else
+      WardrobeItem.last
+    end
+  end
+
+  def previous
+    wardrobe_item = WardrobeItem.where('id > ?', id).first
+
+    if wardrobe_item
+      wardrobe_item
+    else
+      WardrobeItem.first
+    end
+  end
 end
