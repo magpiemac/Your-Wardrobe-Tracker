@@ -36,7 +36,7 @@ const bindClickHandlers = () => {
                 $('#app-container').append(wardrobe_itemHtml)
             })
     })
-    // create resource
+    // create wardrobe_item
     $('#new_wardrobe_item').on('submit', function(e) {
         e.preventDefault()
         $('#app-container').html(' ')
@@ -51,37 +51,30 @@ const bindClickHandlers = () => {
         })
     })
 
-    //previous wardrobe item
+    //previous wardrobe item (wardrobe_item)
     $(document).on('click', '.js-prev', function(e) {
         $('#app-container').html(' ')
         let id = +$(this).attr('data-id');
-        // let nextId = id - 1
-        // let id = $(this).attr('data-id'); //use jQuery to grab id of post
-        // console.log(id)
         fetch(`/wardrobe_items/${id}/previous.json`, {
                 credentials: "include"
             })
             .then(res => res.json())
             .then(wardrobe_item => {
-                console.log(wardrobe_item)
                 let newWardrobe_item = new Wardrobe_item(wardrobe_item)
                 let wardrobe_itemHtml = newWardrobe_item.formatShow()
                 $('#app-container').append(wardrobe_itemHtml)
             })
     })
 
-    //show next wardrobe_item
+    //show next wardrobe item (wardrobe_item)
     $(document).on('click', '.js-next', function(e) {
         $('#app-container').html(' ')
         let id = +$(this).attr('data-id');
-        // let nextId = id + 1
-        // console.log(nextId)
         fetch(`/wardrobe_items/${id}/next.json`, {
                 credentials: "include"
             })
             .then(res => res.json())
             .then(wardrobe_item => {
-                console.log(wardrobe_item)
                 let newWardrobe_item = new Wardrobe_item(wardrobe_item)
                 let wardrobe_itemHtml = newWardrobe_item.formatShow()
                 $('#app-container').append(wardrobe_itemHtml)
@@ -104,7 +97,7 @@ Wardrobe_item.prototype.formatIndex = function() {
     <a href="/wardrobe_items/${this.id}" data-id="${this.id}" class="show_link"><h2>${this.item}</h2></a>
     <h3> -${this.description}</h3>
     <h3> -${this.capsules[0].name}</h3>
-  ` //fix links, add other display items
+  `
     return wardrobe_itemHtml
 };
 
