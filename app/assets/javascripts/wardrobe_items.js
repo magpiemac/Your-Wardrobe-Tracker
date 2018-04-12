@@ -3,7 +3,7 @@ $(() => {
 })
 
 const bindClickHandlers = () => {
-    //get wardrobe_item idex
+    //get wardrobe_item index
     $('.all_wardrobe_items').on('click', (e) => {
         e.preventDefault()
         history.pushState(null, null, "wardrobe_item")
@@ -20,6 +20,7 @@ const bindClickHandlers = () => {
                 })
             })
     })
+
     //show single wardrobe_item
     $(document).on('click', ".show_link", function(e) {
         e.preventDefault()
@@ -36,6 +37,7 @@ const bindClickHandlers = () => {
                 $('#app-container').append(wardrobeItemHtml)
             })
     })
+
     // create wardrobe_item
     $('#new_wardrobe_item').on('submit', function(e) {
         e.preventDefault()
