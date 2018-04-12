@@ -14,9 +14,9 @@ const bindClickHandlers = () => {
             .then(wardrobe_items => {
                 $('#app-container').html(' ')
                 wardrobe_items.forEach(wardrobe_item => {
-                    let newWardrobe_item = new Wardrobe_item(wardrobe_item)
-                    let wardrobe_itemHtml = newWardrobe_item.formatIndex()
-                    $('#app-container').append(wardrobe_itemHtml)
+                    let newWardrobeItem = new WardrobeItem(wardrobe_item)
+                    let wardrobeItemHtml = newWardrobeItem.formatIndex()
+                    $('#app-container').append(wardrobeItemHtml)
                 })
             })
     })
@@ -31,9 +31,9 @@ const bindClickHandlers = () => {
             .then(res => res.json())
             .then(wardrobe_item => {
                 console.log(wardrobe_item)
-                let newWardrobe_item = new Wardrobe_item(wardrobe_item)
-                let wardrobe_itemHtml = newWardrobe_item.formatShow()
-                $('#app-container').append(wardrobe_itemHtml)
+                let newWardrobeItem = new WardrobeItem(wardrobe_item)
+                let wardrobeItemHtml = newWardrobeItem.formatShow()
+                $('#app-container').append(wardrobeItemHtml)
             })
     })
     // create wardrobe_item
@@ -45,7 +45,7 @@ const bindClickHandlers = () => {
             method: 'POST',
             data: $(this).serialize(),
             success: function(data) {
-                const newWardrobeItem = new Wardrobe_item(data)
+                const newWardrobeItem = new WardrobeItem(data)
                 $('#app-container').append(newWardrobeItem.formatShow())
             }
         })
@@ -60,9 +60,9 @@ const bindClickHandlers = () => {
             })
             .then(res => res.json())
             .then(wardrobe_item => {
-                let newWardrobe_item = new Wardrobe_item(wardrobe_item)
-                let wardrobe_itemHtml = newWardrobe_item.formatShow()
-                $('#app-container').append(wardrobe_itemHtml)
+                let newWardrobeItem = new WardrobeItem(wardrobe_item)
+                let wardrobeItemHtml = newWardrobeItem.formatShow()
+                $('#app-container').append(wardrobeItemHtml)
             })
     })
 
@@ -75,15 +75,15 @@ const bindClickHandlers = () => {
             })
             .then(res => res.json())
             .then(wardrobe_item => {
-                let newWardrobe_item = new Wardrobe_item(wardrobe_item)
-                let wardrobe_itemHtml = newWardrobe_item.formatShow()
-                $('#app-container').append(wardrobe_itemHtml)
+                let newWardrobeItem = new WardrobeItem(wardrobe_item)
+                let wardrobeItemHtml = newWardrobeItem.formatShow()
+                $('#app-container').append(wardrobeItemHtml)
             })
     })
 }
 
 //constructor function
-function Wardrobe_item(wardrobe_item) {
+function WardrobeItem(wardrobe_item) {
     this.id = wardrobe_item.id
     this.item = wardrobe_item.item
     this.description = wardrobe_item.description
@@ -92,23 +92,23 @@ function Wardrobe_item(wardrobe_item) {
 }
 
 //index view formatter
-Wardrobe_item.prototype.formatIndex = function() {
-    let wardrobe_itemHtml = `
+WardrobeItem.prototype.formatIndex = function() {
+    let wardrobeItemHtml = `
     <a href="/wardrobe_items/${this.id}" data-id="${this.id}" class="show_link"><h2>${this.item}</h2></a>
     <h3> -${this.description}</h3>
     <h3> -${this.capsules[0].name}</h3>
   `
-    return wardrobe_itemHtml
+    return wardrobeItemHtml
 };
 
 //show view formatter
-Wardrobe_item.prototype.formatShow = function() {
-    let wardrobe_itemHtml = `
+WardrobeItem.prototype.formatShow = function() {
+    let wardrobeItemHtml = `
     <h2>${this.item}</h2>
     <h3> -${this.description}</h3>
     <h3> -${this.capsules[0].name}</h3>
     <button class="js-next" data-id=${this.id}>Next</button>
     <button class="js-prev" data-id=${this.id}>Previous</button>
   `
-    return wardrobe_itemHtml
+    return wardrobeItemHtml
 };
