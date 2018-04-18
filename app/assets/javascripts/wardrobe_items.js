@@ -13,10 +13,12 @@ const bindClickHandlers = () => {
             .then(res => res.json())
             .then(wardrobe_items => {
                 $('#app-container').html(' ')
+                console.log(wardrobe_items)
                 wardrobe_items.forEach(wardrobe_item => {
                     let newWardrobeItem = new WardrobeItem(wardrobe_item)
                     let wardrobeItemHtml = newWardrobeItem.formatIndex()
                     $('#app-container').append(wardrobeItemHtml)
+                    console.log(wardrobe_item.item)
                 })
             })
     })
