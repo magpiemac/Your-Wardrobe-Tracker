@@ -11,14 +11,14 @@ const bindClickHandlers = () => {
                 credentials: "include"
             })
             .then(res => res.json())
-            .then(wardrobe_items => {
+            .then(wardrobeItems => {
                 $('#app-container').html(' ')
-                console.log(wardrobe_items)
-                wardrobe_items.forEach(wardrobe_item => {
-                    let newWardrobeItem = new WardrobeItem(wardrobe_item)
+                console.log(wardrobeItems)
+                wardrobeItems.sort(descriptions).forEach(wardrobeItem => {
+                    let newWardrobeItem = new WardrobeItem(wardrobeItem)
                     let wardrobeItemHtml = newWardrobeItem.formatIndex()
                     $('#app-container').append(wardrobeItemHtml)
-                    console.log(wardrobe_item.item)
+                    console.log(wardrobeItems.item)
                 })
             })
     })
@@ -87,12 +87,12 @@ const bindClickHandlers = () => {
 }
 
 //constructor function
-function WardrobeItem(wardrobe_item) {
-    this.id = wardrobe_item.id
-    this.item = wardrobe_item.item
-    this.description = wardrobe_item.description
-    this.wardrobe_item_capsules = wardrobe_item.wardrobe_item_capsules
-    this.capsules = wardrobe_item.capsules
+function WardrobeItem(wardrobeItem) {
+    this.id = wardrobeItem.id
+    this.item = wardrobeItem.item
+    this.description = wardrobeItem.description
+    this.wardrobeItemCapsules = wardrobeItem.wardrobe_item_capsules
+    this.capsules = wardrobeItem.capsules
 }
 
 //index view formatter
@@ -116,3 +116,17 @@ WardrobeItem.prototype.formatShow = function() {
   `
     return wardrobeItemHtml
 };
+
+let descriptions = (function(a, b) {
+  var descA = a.description.toUpperCase(); // ignore upper and lowercase
+  var descB = b.description.toUpperCase(); // ignore upper and lowercase
+  if (descA < descB) {
+    return -1;
+  }
+  if (descA > descB) {
+    return 1;
+  }
+
+  // names must be equal
+  return 0;
+});
